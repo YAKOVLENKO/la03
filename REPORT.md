@@ -49,12 +49,12 @@ $ git push origin master # Добавляем в репозиторий
 $ git pull origin master # Обновляем
 $ git log # Узнаем, что происходило с репозиторием
 ```
-Создание папок sources, include, examples; добавление в них файлов
+Создание папок sources, include, examples; создание файла print.cpp в папке sources, его заполнение
 ```ShellSession
 $ mkdir sources # Создание папки sources
 $ mkdir include # Создание папки include
 $ mkdir examples # Создание папки examples
-$ cat > sources/print.cpp <<EOF # Создание файла print.cpp в папке sources, его заполнение
+$ cat > sources/print.cpp <<EOF 
 #include <print.hpp>
 
 void print(const std::string& text, std::ostream& out) {
@@ -66,9 +66,9 @@ void print(const std::string& text, std::ofstream& out) {
 }
 EOF
 ```
-
+Создание файла print.hpp в папке include и его заполнение
 ```ShellSession
-$ cat > include/print.hpp <<EOF # Создание файла print.hpp в папке include и его заполнение
+$ cat > include/print.hpp <<EOF 
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -77,9 +77,9 @@ void print(const std::string& text, std::ostream& out = std::cout);
 void print(const std::string& text, std::ofstream& out);
 EOF
 ```
-
+Создание файла example1.cpp в папке examples и его заполнение
 ```ShellSession
-$ cat > examples/example1.cpp <<EOF # Создание файла example1.cpp в папке examples и его заполнение
+$ cat > examples/example1.cpp <<EOF 
 #include <print.hpp>
 
 int main(int argc, char** argv) {
@@ -87,9 +87,9 @@ int main(int argc, char** argv) {
 }
 EOF
 ```
-
+Создание файла example2.cpp в папке examples и его заполнение
 ```ShellSession
-$ cat > examples/example2.cpp <<EOF # Создание файла example2.cpp в папке examples и его заполнение
+$ cat > examples/example2.cpp <<EOF 
 #include <fstream>
 #include <print.hpp>
 
