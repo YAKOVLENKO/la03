@@ -14,47 +14,47 @@ $ open https://git-scm.com
 - [X] 4. Составить отчет и отправить ссылку личным сообщением в **Slack**
 
 ## Tutorial
-
+Присваивание переменным GITHUB_USERNAME и GITHUB_EMAIL значения, после настройка редактор
 ```ShellSession
-$ export GITHUB_USERNAME=<имя_пользователя>
-$ export GITHUB_EMAIL=<адрес_почтового_ящика>
-$ alias edit=<nano|vi|vim|subl>
+$ export GITHUB_USERNAME=YAKOVLENKO # Присваиваем GITHUB_USERNAME значение YAKOVLENKO
+$ export GITHUB_EMAIL=<адрес_почтового_ящика> # Присваиваем GITHUB_EMAIL значение, равное почте аккаунта
+$ alias edit=nano # Настраиваем редактор nano
+```
+Создаем папку lab03, работаем с ней (созданий файлов), работаем с репозиторием
+```ShellSession
+$ mkdir lab03 && cd lab03 # Создаем папку lab03 и переходим в нее
+$ git init # Инициализируем
+$ git config --global user.name ${GITHUB_USERNAME} # Включаем GITHUB_USERNAME в файл .gitconfig
+$ git config --global user.email ${GITHUB_EMAIL} # Включаем GITHUB_EMAIL в файл .gitconfig
+$ git config -e --global # Проверяем правильность данных
+$ git remote add origin https://github.com/${GITHUB_USERNAME}/la03 # Добавляем репозиторий
+$ git pull origin master # Обновляем
+$ touch README.md # Создаем файл
+$ git status # Узнаем статус проекта
+$ git add README.md # Добавляем файл
+$ git commit -m"added README.md" # Коммитим файл
+$ git push origin master # Добавляем в репозиторий
 ```
 
-```ShellSession
-$ mkdir lab03 && cd lab03
-$ git init
-$ git config --global user.name ${GITHUB_USERNAME}
-$ git config --global user.email ${GITHUB_EMAIL}
-$ git config -e --global
-$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab03
-$ git pull origin master
-$ touch README.md
-$ git status
-$ git add README.md
-$ git commit -m"added README.md"
-$ git push origin master
-```
-
-Добавить на сервисе **GitHub** в репозитории **lab03** файл **.gitignore**
-со следующем содержимом:
+Добавляем на сервисе **GitHub** в репозитории **la03** файл **.gitignore**
+со следующим содержимым:
 
 ```ShellSession
 *build*/
 *install*/
 *.swp
 ```
-
+Проверка
 ```ShellSession
-$ git pull origin master
-$ git log
+$ git pull origin master # Обновляем
+$ git log # Узнаем, что происходило с репозиторием
 ```
-
+Создание папок sources, include, examples; добавление в них файлов
 ```ShellSession
-$ mkdir sources
-$ mkdir include
-$ mkdir examples
-$ cat > sources/print.cpp <<EOF
+$ mkdir sources # Создание папки sources
+$ mkdir include # Создание папки include
+$ mkdir examples # Создание папки examples
+$ cat > sources/print.cpp <<EOF # Создание файла print.cpp в папке sources, его заполнение
 #include <print.hpp>
 
 void print(const std::string& text, std::ostream& out) {
@@ -68,7 +68,7 @@ EOF
 ```
 
 ```ShellSession
-$ cat > include/print.hpp <<EOF
+$ cat > include/print.hpp <<EOF # Создание файла print.hpp в папке include и его заполнение
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -79,7 +79,7 @@ EOF
 ```
 
 ```ShellSession
-$ cat > examples/example1.cpp <<EOF
+$ cat > examples/example1.cpp <<EOF # Создание файла example1.cpp в папке examples и его заполнение
 #include <print.hpp>
 
 int main(int argc, char** argv) {
@@ -89,7 +89,7 @@ EOF
 ```
 
 ```ShellSession
-$ cat > examples/example2.cpp <<EOF
+$ cat > examples/example2.cpp <<EOF # Создание файла example2.cpp в папке examples и его заполнение
 #include <fstream>
 #include <print.hpp>
 
@@ -99,29 +99,29 @@ int main(int argc, char** argv) {
 }
 EOF
 ```
-
+Редактирование
 ```ShellSession
-$ edit README.md
+$ edit README.md # Редактируем README.md
 ```
-
+Загрузка созданного в репозиторий
 ```ShellSession
-$ git status
-$ git add .
-$ git commit -m"added sources"
-$ git push origin master
+$ git status # Узнаем статус проекта
+$ git add . # Добавляем все файлы 
+$ git commit -m"added sources" # Коммитим файлы
+$ git push origin master # Добавляем в репозиторий
 ```
 
 ## Report
 
 ```ShellSession
-$ cd ~/workspace/labs/
-$ export LAB_NUMBER=03
-$ git clone https://github.com/tp-labs/lab${LAB_NUMBER} tasks/lab${LAB_NUMBER}
-$ mkdir reports/lab${LAB_NUMBER}
-$ cp tasks/lab${LAB_NUMBER}/README.md reports/lab${LAB_NUMBER}/REPORT.md
-$ cd reports/lab${LAB_NUMBER}
-$ edit REPORT.md
-$ gistup -m "lab${LAB_NUMBER}"
+$ cd ~/workspace/labs/ # Переходим в папку labs
+$ export LAB_NUMBER=02 # Присваиваем LAB_NUMBER значение 03
+$ git clone https://github.com/tp-labs/lab${LAB_NUMBER} tasks/lab${LAB_NUMBER} # Получаем информацию с github
+$ mkdir reports/lab${LAB_NUMBER} # Создаем новую папку
+$ cp tasks/lab${LAB_NUMBER}/README.md reports/lab${LAB_NUMBER}/REPORT.md # Переименовываем README.md и копируем в созданную папку
+$ cd reports/lab${LAB_NUMBER} # Входим в папку
+$ edit REPORT.md # Редактируеме файл
+$ gistup -m "lab${LAB_NUMBER}" # Коммитим
 ```
 
 ## Links
